@@ -154,7 +154,7 @@ finally:
         maintainer=AUTHOR,
         maintainer_email=AUTHOR_EMAIL,
         name=NAME,
-        packages=find_packages(where='boolify', exclude=['docs', 'tests*', 'examples', 'examples.py', '.gitignore', '.github', '.gitattributes', 'README.md']),
+        packages=find_packages(where='boolify', exclude=['.git', 'docs', 'tests*', 'examples', 'examples.py', '.gitignore', '.github', '.gitattributes', 'README.md']),
         platforms = 'any',
         python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*',
         setup_requires=load_requirements('pip'),
