@@ -20,7 +20,7 @@ finally:
         finally:
             with open(os.path.join(HERE, filename), mode, encoding=encoding) as f:
                 return f.read()
-    def load_requirements(filename='pip', folder='requirements', file_ext='.txt'):
+    def load_requirements(filename='base', folder='requirements', file_ext='.txt'):
         """Load requirements from a pip requirements file"""
         _ = []
         for __ in read_file('{}/{}'.format(folder, filename if filename.endswith(file_ext) else '{}{}'.format(filename, file_ext))).splitlines():
@@ -157,7 +157,7 @@ finally:
         packages=find_packages(exclude=['.git', 'docs', 'tests*', 'examples', 'examples.py', '.gitignore', '.github', '.gitattributes', 'README.md']),
         platforms = 'any',
         python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*',
-        setup_requires=load_requirements('pip'),
+        setup_requires=load_requirements('base'),
         tests_require=load_requirements('dev'),
         version='0.1',
         url=URL,
