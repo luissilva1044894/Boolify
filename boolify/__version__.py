@@ -20,18 +20,18 @@ from collections import namedtuple
 version_info = namedtuple('VersionInfo', 'major minor micro releaselevel serial')(major=VERSION[0], minor=VERSION[1], micro=VERSION[2], releaselevel=__release_level[1], serial=0)
 
 __all__ = (
-    '__description__',
-    '__url__',
-    '__version__',
-    '__author__',
-    '__author_email__',
-    '__license__',
-    '__copyright__',
-    '__package_name__',
-    'version_info',
+  '__description__',
+  '__url__',
+  '__version__',
+  '__author__',
+  '__author_email__',
+  '__license__',
+  '__copyright__',
+  '__package_name__',
+  'version_info',
 )
 
 authors = (
-    (__author__, __author_email__),
+  (__author__, __author_email__),
 )
 __authors__ = ', '.join('{} <{}>'.format(*_) for _ in authors)
