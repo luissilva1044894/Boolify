@@ -65,13 +65,6 @@ finally:
     user_options = []
 
     @staticmethod
-    def input(message):
-      """Python 2.x/3.x compatibility"""
-      try:
-        return raw_input(message)
-      except NameError:
-        return input(message)
-    @staticmethod
     def recursive_delete(path):
       from shutil import rmtree
       try:
@@ -83,7 +76,7 @@ finally:
       """ask a yes/no question, return result"""
       if not sys.stdout.isatty():
         return False
-      reply = BaseCommand.input(f'\n{message} [Y/N]:')
+      reply = input(f'\n{message} [Y/N]:')
       return reply and reply[0].lower() == 'y'
     @staticmethod
     def status_msgs(*msgs):
