@@ -12,6 +12,17 @@ finally:
   os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir))) # allow setup.py to be run from any path
   HERE = os.path.abspath(os.path.dirname(__file__))
 
+  def call_(cmd, show_stdout=True, shell=False):
+    """Execute *cmd* and return True on success."""
+    from subprocess import call
+    if show_stdout:
+      rc = call(cmd, shell=shell)
+    else:
+      with open(os.devnull, 'w') as n:
+        rc = call(cmd, shell=shell, stdout=n)
+    return rc == 0
+
+
   def read_file(filename, mode='r', encoding='utf-8'):
     try:
       from io import open
