@@ -156,7 +156,7 @@ finally:
     name=NAME,
     packages=find_packages(exclude=['.git', 'docs', 'tests*', 'examples', 'examples.py', '.gitignore', '.github', '.gitattributes', 'README.md']),
     platforms = 'any',
-    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*',
+    python_requires='>=3.5.*',
     setup_requires=load_requirements('base'),
     tests_require=load_requirements('dev'),
     version='0.1',
