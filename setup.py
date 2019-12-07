@@ -34,7 +34,9 @@ finally:
   def load_requirements(filename='base', folder='requirements', file_ext='.txt'):
     """Load requirements from a pip requirements file"""
     _ = []
-    for __ in read_file('{}/{}'.format(folder, filename if filename.endswith(file_ext) else f'{filename}{file_ext}')).splitlines():
+    if not filename.endswith(file_ext):
+      filename = f'{filename}{file_ext}'
+    for __ in read_file(f'{folder}/{filename}').splitlines():
       if __:
         if __[:3].lower() == '-r ':
           _ += load_requirements(__[3:])
@@ -45,7 +47,7 @@ finally:
     return _
   def get_metadata(package_name):
     _ = {}
-    exec(read_file('{package_name}/__version__.py'.format(package_name=package_name)), _)
+    exec(read_file(f'{package_name}/__version__.py'), _)
     return _
   def get_readme(filename='README.md'):
     try:
@@ -72,11 +74,11 @@ finally:
       except OSError:
         pass
     @staticmethod
-    def confirm(message):
+    def confirm(msg):
       """ask a yes/no question, return result"""
       if not sys.stdout.isatty():
         return False
-      reply = input(f'\n{message} [Y/N]:')
+      reply = input(f'\n{msg} [Y/N]:')
       return reply and reply[0].lower() == 'y'
     @staticmethod
     def status_msgs(*msgs):
@@ -85,9 +87,9 @@ finally:
         print(msg)
       print('*' * 75)
     @staticmethod
-    def status(s):
+    def status(msg):
       """Prints things in bold."""
-      print("\033[1m{0}\033[0m".format(s))
+      print(f'\033[1m{msg}\033[0m')
     def initialize_options(self):
       try:
         import colorama
@@ -130,11 +132,8 @@ finally:
       'Natural Language :: English',
       'Operating System :: OS Independent',
       'Programming Language :: Python',
-      'Programming Language :: Python :: 2',
-      'Programming Language :: Python :: 2.7',
       'Programming Language :: Python :: 3',
       'Programming Language :: Python :: 3.6',
-      'Programming Language :: Python :: 3.5',
       'Programming Language :: Python :: 3.7',
       'Programming Language :: Python :: 3.8',
       'Programming Language :: Python :: Implementation :: CPython',
@@ -144,7 +143,7 @@ finally:
       'Topic :: Utilities'
     ],
     description=DESCRIPTION,
-    download_url='{}/archive/{}.tar.gz'.format(URL, VERSION),
+    download_url=f'{URL}/archive/{VERSION}.tar.gz',
     extras_require={
       'dev': load_requirements('dev'),
       'docs': load_requirements('docs'),
@@ -160,7 +159,7 @@ finally:
     name=NAME,
     packages=find_packages(exclude=['.git', 'docs', 'tests*', 'examples', 'examples.py', '.gitignore', '.github', '.gitattributes', 'README.md']),
     platforms = 'any',
-    python_requires='>=3.5.*',
+    python_requires='>=3.6.*',
     setup_requires=load_requirements('base'),
     tests_require=load_requirements('dev'),
     version='0.1',
@@ -168,7 +167,7 @@ finally:
     zip_safe=False,
     project_urls={
       'Discord: Support Server': 'https://discord.gg/XkydRPS',
-      'Github: Issues': URL + '/issues',
+      'Github: Issues': f'{URL}/issues',
       'Say Thanks!': 'https://saythanks.io/to/luissilva1044894',
     },
   )
