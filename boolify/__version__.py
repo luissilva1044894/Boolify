@@ -10,7 +10,7 @@ __description__ = 'Convert common strings into bool values.'
 __license__ = 'MIT'
 __package_name__ = 'boolify'
 __url__ = f'https://github.com/luissilva1044894/{__package_name__}'
-VERSION = (0, 0, 2, 'dev0')
+VERSION = (0, 0, 3, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 version = __version__
 
