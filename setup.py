@@ -162,7 +162,7 @@ finally:
     python_requires='>=3.6.*',
     setup_requires=load_requirements('base'),
     tests_require=load_requirements('dev'),
-    version='0.1',
+    version=VERSION,
     url=URL,
     zip_safe=False,
     project_urls={
