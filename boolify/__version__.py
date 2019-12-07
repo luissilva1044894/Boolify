@@ -5,11 +5,11 @@
 from datetime import datetime
 __author__ = 'Luis (Lugg) Gustavo'
 __author_email__ = 'the.nonsocial@gmail.com'
-__copyright__ = '2019-{}, {}'.format(datetime.utcnow().year, __author__)
+__copyright__ = f'2019-{datetime.utcnow().year}, {__author__}'
 __description__ = 'Convert common strings into bool values.'
 __license__ = 'MIT'
 __package_name__ = 'boolify'
-__url__ = 'https://github.com/luissilva1044894/{package_name}'.format(package_name=__package_name__)
+__url__ = f'https://github.com/luissilva1044894/{__package_name__}'
 VERSION = (0, 0, 1, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 version = __version__

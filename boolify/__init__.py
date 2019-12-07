@@ -5,18 +5,6 @@
 DEFAULT_VALUES = ( '1', 'able', 'active', 'allow', 'allowed', 'enabled', 'in', 'ok', 'on', 'running', 't', 'true', 'up', 'y', 'yes' )
 
 def boolify(raw=None, custom_values=None, *, non_str=True, raise_exc=False):
-  """Function that will translate common strings into bool values.
-
-  Case is ignored for strings. These string values are handled:
-    True -> '1', '1.0', 'allow', 'allowed', 'enabled', 'in', 'ok', 'on', 'running', 't', 'true', 'up', 'y', 'yes'
-    False -> any other string
-  non_str:
-    Non-string values are passed to bool.
-
-  When 'non_str' is passed as False, Objects other than string will be transformed using built-in bool() function.
-
-  Raises ValueError when 'raise_exc' is passed as True and it gets a string it doesn't handle.
-  """
   def _boolify(raw, custom_values=None, *, non_str=True, raise_exc=False):
     def is_str(raw):
       try:
@@ -50,3 +38,16 @@ def boolify(raw=None, custom_values=None, *, non_str=True, raise_exc=False):
       return {k: _boolify(raw=_, custom_values=custom_values, non_str=non_str, raise_exc=raise_exc) for k,_ in (raw.items() if hasattr(raw, 'items') else raw.iteritems())}
     return [_boolify(raw=_, custom_values=custom_values, non_str=non_str, raise_exc=raise_exc) for _ in raw]
   return _boolify(raw=raw, custom_values=custom_values, non_str=non_str, raise_exc=raise_exc)
+
+boolify.__doc__ = """Function that will translate common strings into bool values.
+
+  Case is ignored for strings. These string values are handled:
+    True -> {DEF}
+    False -> any other string
+
+  {PARAM3}:
+    Non-string values are passed to bool.
+
+  When '{PARAM3}' is passed as False, Objects other than string will be transformed using built-in bool() function.
+
+  Raises ValueError when '{PARAM4}' is passed as True and it gets a string it doesn't handle.""".format(DEF='\', \''.join(DEFAULT_VALUES), PARAM3=boolify.__code__.co_varnames[-2], PARAM4=boolify.__code__.co_varnames[-1])
