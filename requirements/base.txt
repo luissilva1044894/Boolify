@@ -1,3 +1,9 @@
 
+# Base requirements
+
+# https://github.com/benjaminp/six
 six;python_version>='2.7'
+
+# https://github.com/tartley/colorama
 colorama;os_name=='nt'
+

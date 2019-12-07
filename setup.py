@@ -23,7 +23,7 @@ finally:
   def load_requirements(filename='base', folder='requirements', file_ext='.txt'):
     """Load requirements from a pip requirements file"""
     _ = []
-    for __ in read_file('{}/{}'.format(folder, filename if filename.endswith(file_ext) else '{}{}'.format(filename, file_ext))).splitlines():
+    for __ in read_file('{}/{}'.format(folder, filename if filename.endswith(file_ext) else f'{filename}{file_ext}')).splitlines():
       if __:
         if __[:3].lower() == '-r ':
           _ += load_requirements(__[3:])

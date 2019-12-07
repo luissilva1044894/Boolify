@@ -1,4 +1,7 @@
 
-sphinx_rtd_theme~=0.4.3;sys_platform=='win32'
+# Docs requirements
+
+# https://github.com/readthedocs/sphinx_rtd_theme
+sphinx_rtd_theme~=0.4.3;sys_platform=='win32
 
 -r base.txt
