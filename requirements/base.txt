@@ -3,4 +3,3 @@
 
 # https://github.com/tartley/colorama
 colorama;os_name=='nt'
-
