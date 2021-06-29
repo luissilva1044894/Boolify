@@ -17,7 +17,7 @@ setuptools~=57.0.0
 twine~=3.4.1
 
 # https://github.com/pypa/virtualenv
-virtualenv~=20.4.0
+virtualenv~=20.4.7
 
 # https://github.com/pypa/wheel
 wheel~=0.36.2
