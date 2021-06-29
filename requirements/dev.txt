@@ -2,7 +2,7 @@
 # Dev requirements
 
 # https://github.com/pypa/packaging
-packaging~=20.8
+packaging~=20.9
 
 # https://github.com/pypa/pip
 pip~=21.0
